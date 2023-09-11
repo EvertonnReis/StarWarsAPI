@@ -5,7 +5,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-body">
     <div class="container-fluid">
-      <router-link to="/" class="navbar-brand">Star Wars</router-link>
+      <router-link to="/" class="navbar-brand star-wars-title">Star Wars</router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expended="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

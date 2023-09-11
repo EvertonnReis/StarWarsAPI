@@ -1,4 +1,10 @@
 @font-face {
-    font-family: 'Starjedi';
-    src: url('src/fonts/Starjedi.ttf') format('truetype');
-  }
+  font-family: 'Star Wars Font';
+  src: url('src/fonts/Starjedi.ttf') format('truetype');
+}
+.star-wars-title,
+.navbar-nav,
+.nav-link {
+  font-family: 'Star Wars Font', sans-serif;
+  /* //color: rgb(233, 233, 12); */
+}
