@@ -4,7 +4,8 @@
 }
 .star-wars-title,
 .navbar-nav,
-.nav-link {
+.nav-link,
+.next-button,
+.previous-button {
   font-family: 'Star Wars Font', sans-serif;
-  /* //color: rgb(233, 233, 12); */
 }

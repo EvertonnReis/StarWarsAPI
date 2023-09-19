@@ -22,16 +22,13 @@
     </div>
   </nav>
 
-  <div clas="main">
+  <div class="main">
     <router-view></router-view>
   </div>
 
-  <footer class="bg-dark text-light">
-    <div> Unimar | ADS | {{ new Date().getFullYear() }}</div>
+  <footer class="bg-dark text-light" >
+    <div> Everton Reis / ADS / {{ new Date().getFullYear() }}</div>
   </footer>
-  <!-- <div class="app">
-    <p>teste</p>
-  </div> -->
 </template>
 
 <style>
@@ -44,5 +41,6 @@ footer{
   align-items: center;
   justify-content: center;
   height: 56px;
+  font-family: 'Star Wars Font', sans-serif;
 }
 </style>
