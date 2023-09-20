@@ -88,7 +88,39 @@ export default {
           'Dud Bolt': 'src/img/people/48.jpg',
           'Gasgano': 'src/img/people/49.jpg',
           'Ben Quadinaros': 'src/img/people/50.jpg',
-          'Mace Windu': 'src/img/people/51.jpg'
+          'Mace Windu': 'src/img/people/51.jpg',
+          'Ki-Adi-Mundi': 'src/img/people/52.jpg',
+          'Kit Fisto': 'src/img/people/53.jpg',
+          'Eeth Koth': 'src/img/people/54.jpg',
+          'Adi Gallia': 'src/img/people/55.jpg',
+          'Saesee Tiin': 'src/img/people/56.jpg',
+          'Yarael Poof': 'src/img/people/57.jpg',
+          'Plo Koon': 'src/img/people/58.jpg',
+          'Mas Amedda': 'src/img/people/59.jpg',
+          'Gregar Typho': 'src/img/people/60.jpg',
+          'Cordé': 'src/img/people/61.jpg',
+          'Cliegg Lars': 'src/img/people/62.jpg',
+          'Poggle the Lesser': 'src/img/people/63.jpg',
+          'Luminara Unduli': 'src/img/people/64.jpg',
+          'Barriss Offee': 'src/img/people/65.jpg',
+          'Dormé': 'src/img/people/66.jpg',
+          'Dooku': 'src/img/people/67.jpg',
+          'Bail Prestor Organa': 'src/img/people/68.jpg',
+          'Jango Fett': 'src/img/people/69.jpg',
+          'Zam Wesell': 'src/img/people/70.jpg',
+          'Dexter Jettster': 'src/img/people/71.jpg',
+          'Lama Su': 'src/img/people/72.jpg',
+          'Taun We': 'src/img/people/73.jpg',
+          'Jocasta Nu': 'src/img/people/74.jpg',
+          'R4-P17': 'src/img/people/75.jpg',
+          'Wat Tambor': 'src/img/people/76.jpg',
+          'San Hill': 'src/img/people/77.jpg',
+          'Shaak Ti': 'src/img/people/78.jpg',
+          'Grievous': 'src/img/people/79.jpg',
+          'Tarfful': 'src/img/people/80.jpg',
+          'Raymus Antilles': 'src/img/people/81.jpg',
+          'Sly Moore': 'src/img/people/82.jpg',
+          'Tion Medon': 'src/img/people/83.jpg',
         };
 
         this.characters = charactersData.map(character => ({
@@ -148,6 +180,7 @@ export default {
 .character-name {
   font-size: 20px;
   margin: 10px 0;
+  font-style: italic;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

@@ -27,7 +27,7 @@
   </div>
 
   <footer class="bg-dark text-light" >
-    <div> Everton Reis / ADS / {{ new Date().getFullYear() }}</div>
+    <div> Everton Reis / ADS / {{ new Date().getFullYear() }}</div> 
   </footer>
 </template>
 
