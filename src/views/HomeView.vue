@@ -7,13 +7,37 @@
         class="character-card"
       >
         <img :src="character.image" alt="Character Image" class="character-image" />
-        <h2 class="character-name">{{ character.name }}</h2>
+        <h2 class="character-name">{{ character.name.toLowerCase() }}</h2>
         <p class="character-description">{{ character.description }}</p>
-        <button type="button" class="btn btn-dark">Details</button>
+        <button type="button" class="btn btn-dark" @click="openModal(character)">Details</button>
       </div>
       <div class="navigation-buttons">
         <button @click="previousPage" class="previous-button">Previous Page</button>
         <button @click="nextPage" class="next-button">Next Page</button>
+      </div>
+      <div class="modal" v-if="showModal">
+        <div class="modal-content">
+          <h1>{{ selectedCharacter.name.toLowerCase() }}</h1>
+          <h3>Films</h3>
+          <ul class="film-list">
+            <li v-for="(film, index) in selectedCharacter.films" :key="index" class="film-item">
+              <template v-if="filmList[film]">
+                <img :src="filmList[film].image" alt="Film Image" width="100" height="100">
+                <span>{{ filmList[film].title }}</span>
+              </template>
+            </li>
+          </ul>
+          <h3>Planets</h3>
+          <ul class="planet-list">
+            <li v-for="(planet, index) in selectedCharacter.planet" :key="index" class="planet-item">
+              <template v-if="planetList[planet]">
+                <img :src="planetList[planet].image" alt="Planet Image" width="50" height="50">
+                <span>{{ planetList[planet].name }}</span>
+              </template>
+            </li>
+          </ul>
+          <button @click="closeModal" class="btn btn-dark">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +50,39 @@ export default {
   data() {
     return {
       characters: [],
-      currentPage: 1
+      currentPage: 1,
+      selectedCharacter: null,
+      showModal: false,
+      filmList: {
+        'https://swapi.dev/api/films/1/':{
+          title: 'A New Hope',
+          image: 'src/img/movies/episodeIV.jpg'
+        },
+        'https://swapi.dev/api/films/2/':{
+          title: 'The Empire Strikes Back',
+          image: 'src/img/movies/episodeV.jpg'
+        },
+        'https://swapi.dev/api/films/3/':{
+          title: 'Return of the Jedi',
+          image: 'src/img/movies/episodeVI.jpg'
+        },
+        'https://swapi.dev/api/films/4/':{
+          title: 'The Phantom Menace',
+          image: 'src/img/movies/episodeI.jpg'
+        },
+        'https://swapi.dev/api/films/5/':{
+          title: 'Attack of the Clones',
+          image: 'src/img/movies/episodeII.jpg'
+        },
+        'https://swapi.dev/api/films/6/':{
+          title: 'Revenge of the Sith',
+          image: 'src/img/movies/episodeIII.jpg'
+        },
+      },
+      planetList:{
+          name: 'Alderaan',
+          image: 'src/img/planets/Aldera_City.png'
+        }
     };
   },
   async mounted() {
@@ -126,7 +182,9 @@ export default {
         this.characters = charactersData.map(character => ({
           name: character.name,
           description: `Height: ${character.height}cm, Mass: ${character.mass}kg`,
-          image: characterImages[character.name] || '' 
+          image: characterImages[character.name] || '',
+          films: character.films,
+          planet: character.homeworld
         }));
 
       } catch (error) {
@@ -143,6 +201,14 @@ export default {
       console.log(this.currentPage)
       await this.loadCharacters();
     },
+    openModal(character){
+      this.selectedCharacter = character;
+      this.showModal = true;
+    },
+    closeModal(){
+      this.selectedCharacter = null;
+      this.showModal = false;
+    }
   },
 };
 
@@ -181,7 +247,6 @@ export default {
   font-size: 20px;
   margin: 10px 0;
   font-style: italic;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .character-description {
@@ -211,4 +276,43 @@ export default {
   justify-content: center;
   padding: 10px;
 }
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto;
+  text-align: center;
+}
+
+.modal button {
+  margin-top: 10px;
+}
+
+.film-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.film-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 </style>

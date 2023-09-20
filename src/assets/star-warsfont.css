@@ -6,6 +6,9 @@
 .navbar-nav,
 .nav-link,
 .next-button,
-.previous-button {
+.previous-button,
+.character-name,
+.btn,
+.modal-content {
   font-family: 'Star Wars Font', sans-serif;
 }
