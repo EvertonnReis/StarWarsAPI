@@ -40,7 +40,7 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 40px;
   font-family: 'Star Wars Font', sans-serif;
 }
 </style>
