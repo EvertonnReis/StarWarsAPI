@@ -23,19 +23,20 @@
             <li v-for="(film, index) in selectedCharacter.films" :key="index" class="film-item">
               <template v-if="filmList[film]">
                 <img :src="filmList[film].image" alt="Film Image" width="100" height="100">
-                <span>{{ filmList[film].title }}</span>
+                <span class="title-modal">{{ filmList[film].title }}</span>
               </template>
             </li>
           </ul>
-          <h3>Planets</h3>
-          <ul class="planet-list">
-            <li v-for="(planet, index) in selectedCharacter.planet" :key="index" class="planet-item">
-              <template v-if="planetList[planet]">
-                <img :src="planetList[planet].image" alt="Planet Image" width="50" height="50">
-                <span>{{ planetList[planet].name }}</span>
-              </template>
-            </li>
-          </ul>
+          <h3>Planet</h3>
+          <div v-if="planetDetails">
+            <template v-if="planetList[selectedCharacter.planet]">
+              <img :src="planetList[selectedCharacter.planet].image" alt="Planet Image" width="350" height="350">
+              <span class="title-modal" style="margin-left: 10px;">{{ planetDetails.name }}</span>
+            </template>
+            <template v-else>
+              <span>Planeta não encontrado.</span>
+            </template>
+          </div>
           <button @click="closeModal" class="btn btn-dark">Close</button>
         </div>
       </div>
@@ -79,11 +80,38 @@ export default {
           image: 'src/img/movies/episodeIII.jpg'
         },
       },
-      planetList:{
+      planetList: {
+        'https://swapi.dev/api/planets/1/': {
+          name: 'Tatooine',
+          image: 'src/img/planets/Tatooine.jpeg'
+        },
+        'https://swapi.dev/api/planets/2/': {
           name: 'Alderaan',
           image: 'src/img/planets/Aldera_City.png'
-        }
-    };
+        },
+        'https://swapi.dev/api/planets/3/': {
+          name: 'Yavin IV',
+          image: 'src/img/planets/yavin_iv.jpg'
+        },
+        'https://swapi.dev/api/planets/5/': {
+          name: 'Dagobah',
+          image: 'src/img/planets/Dagobah.jpg'
+        },
+        'https://swapi.dev/api/planets/7/': {
+          name: 'Endor',
+          image: 'src/img/planets/Endor.jpg'
+        },
+        'https://swapi.dev/api/planets/9/': {
+          name: 'Coruscant',
+          image: 'src/img/planets/Coruscant.jpg'
+        },
+        'https://swapi.dev/api/planets/11/': {
+          name: 'Geonosis',
+          image: 'src/img/planets/Geonosis.jpeg'
+        },
+      },
+      planetDetails: null
+      };
   },
   async mounted() {
     await this.loadCharacters();
@@ -201,9 +229,17 @@ export default {
       console.log(this.currentPage)
       await this.loadCharacters();
     },
-    openModal(character){
+    async openModal(character){
       this.selectedCharacter = character;
       this.showModal = true;
+
+      try {
+        const response = await axios.get(character.planet);
+        this.planetDetails = response.data;
+      } catch (error) {
+        console.error('Erro ao obter dados do planeta da API:', error);
+      }
+
     },
     closeModal(){
       this.selectedCharacter = null;
@@ -245,7 +281,7 @@ export default {
 
 .character-name {
   font-size: 20px;
-  margin: 10px 0;
+  margin: 10px;
   font-style: italic;
 }
 
@@ -313,6 +349,10 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.title-modal{
+  margin-left: 10px;
 }
 
 </style>
