@@ -9,6 +9,7 @@
 .previous-button,
 .character-name,
 .btn,
-.modal-content {
+.modal-content,
+.title-h1 {
   font-family: 'Star Wars Font', sans-serif;
 }

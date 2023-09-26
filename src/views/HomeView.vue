@@ -239,7 +239,6 @@ export default {
       } catch (error) {
         console.error('Erro ao obter dados do planeta da API:', error);
       }
-
     },
     closeModal(){
       this.selectedCharacter = null;
